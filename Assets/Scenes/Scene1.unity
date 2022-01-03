@@ -555,8 +555,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf49f8444bc040247bb01ffa04b37572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextStepDelay: 0.1
-  backGround: {fileID: 0}
+  nextStepDelay: 0.2
+  body: {fileID: 8148220698193149996, guid: 3fda199c78ef0234582114dc74771d47, type: 3}
+  minY: -9.5
+  maxY: 9.5
+  minx: -12
+  maxX: 12
 --- !u!61 &828496323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -614,6 +618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946200384}
   - component: {fileID: 946200383}
+  - component: {fileID: 946200386}
   - component: {fileID: 946200385}
   m_Layer: 0
   m_Name: BackGround
@@ -687,7 +692,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &946200385
+--- !u!114 &946200385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 946200382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af426f20bbd879742920717a118a7356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  food: {fileID: 2058433618601467639, guid: 347ece1d6c6e51b4f81ab565f0d54374, type: 3}
+  nextSpawnDelay: 3
+--- !u!61 &946200386
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -700,7 +719,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00010564923, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -711,7 +730,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0002112, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1109217526
 GameObject:
