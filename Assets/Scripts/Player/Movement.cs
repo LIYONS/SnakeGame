@@ -7,10 +7,12 @@ public class Movement : MonoBehaviour
     Vector2 direction;
     [SerializeField] float nextStepDelay;
     [SerializeField] GameObject body;
-    List<Transform> segments=new List<Transform>();
+    [SerializeField] float initialSegments;
     Rigidbody2D rb;
     float timeDelay;
     Vector3 currentPos;
+    List<Transform> segments=new List<Transform>();
+
 
     //Level-wrap
     [SerializeField] float minY;
@@ -25,6 +27,10 @@ public class Movement : MonoBehaviour
         direction = Vector2.right;
         rb = GetComponent<Rigidbody2D>();
         segments.Insert(0,transform);
+        for(int i=0;i<initialSegments;i++)
+        {
+            Grow();
+        }
     }
     private void Update()
     {
@@ -72,23 +78,24 @@ public class Movement : MonoBehaviour
             timeDelay = Time.time + nextStepDelay;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision) 
-    {
-        if(collision.gameObject.tag=="NormalFood")
-        {
-            Grow();
-            Destroy(collision.gameObject);
-        }
-        else if(collision.gameObject.tag=="Obstacle")
-        {
-        }
-    }
-    void Grow()
+
+    public void Grow()
     {
         int listLength = segments.Count;
         GameObject segment = Instantiate(body);
-        segment.transform.position = segments[listLength - 1].transform.position;
+        Vector3 position = segments[listLength - 1].transform.position;
+        position.z = 2;
+        segment.transform.position = position;
         segments.Insert(segments.Count, segment.transform);
+    }
+
+    public void Burn()
+    {
+        if (segments.Count > 3)
+        {
+            Destroy(segments[segments.Count - 1].gameObject);
+            segments.RemoveAt(segments.Count - 1);
+        }
     }
 
     void LevelWrap()
@@ -98,11 +105,11 @@ public class Movement : MonoBehaviour
         {
             pos.x = maxX;
         }
-        else if(pos.x>=maxX)
+        else if (pos.x >= maxX)
         {
             pos.x = minx;
         }
-        else if(pos.y<=minY)
+        else if (pos.y <= minY)
         {
             pos.y = maxY;
         }
@@ -116,12 +123,19 @@ public class Movement : MonoBehaviour
     }
     void DeathCheck()
     {
-        for(int i=1;i<segments.Count;i++)
+        for (int i = 1; i < segments.Count; i++)
         {
-            if(transform.position.x==segments[i].position.x && transform.position.y== segments[i].position.y)
+            Vector3 position = transform.position;
+            if (position.x == segments[i].position.x && position.y == segments[i].position.y && position.z == segments[i].position.z)
             {
                 Debug.Log("GameOver");
             }
         }
     }
+
+    public List<Transform> GetSegments()
+    {
+        return segments;
+    }
 }
+

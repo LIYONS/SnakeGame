@@ -471,6 +471,8 @@ GameObject:
   - component: {fileID: 828496322}
   - component: {fileID: 828496324}
   - component: {fileID: 828496323}
+  - component: {fileID: 828496325}
+  - component: {fileID: 828496326}
   m_Layer: 0
   m_Name: Snake
   m_TagString: Player
@@ -518,7 +520,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 7482667652216324306, guid: f478749c30db906408fab90ad3d3904e, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: 806e4a610eaf2594ab1f37d0f92ddce8, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -536,13 +538,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828496319}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &828496322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextStepDelay: 0.2
   body: {fileID: 8148220698193149996, guid: 3fda199c78ef0234582114dc74771d47, type: 3}
+  initialSegments: 3
   minY: -9.5
   maxY: 9.5
   minx: -12
@@ -608,6 +611,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &828496325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828496319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2da1f4c399e6941a2509c1345b3020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gainerPS: {fileID: 4046600018305304165, guid: 1ce6984e8b6c58c4e835288be4d5c2e2, type: 3}
+  burnerPS: {fileID: 4010164773580302160, guid: 44fc98e3dd774ec4f87d68b87e32c5a7, type: 3}
+--- !u!114 &828496326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828496319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a238ad03fca29814682eb3fccf5ae3f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBtwSpawns: 0.1
+  echoBody: {fileID: 3665619856924873619, guid: b544977e9c81dcb429b01fb47772d3b3, type: 3}
 --- !u!1 &946200382
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,8 +735,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af426f20bbd879742920717a118a7356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  food: {fileID: 2058433618601467639, guid: 347ece1d6c6e51b4f81ab565f0d54374, type: 3}
-  nextSpawnDelay: 3
+  Gainer: {fileID: 6065255904899639758, guid: ea98ea10a9da0c44ea69a13c5a75b94d, type: 3}
+  burner: {fileID: 2058433618601467639, guid: 347ece1d6c6e51b4f81ab565f0d54374, type: 3}
+  nextSpawnDelay: 5
 --- !u!61 &946200386
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -716,7 +748,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

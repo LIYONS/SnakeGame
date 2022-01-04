@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
-  - NormalFood
+  - Gainer
+  - Burner
   layers:
   - Default
   - TransparentFX

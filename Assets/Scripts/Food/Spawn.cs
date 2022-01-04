@@ -4,31 +4,38 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    [SerializeField] GameObject food;
+    [SerializeField] GameObject Gainer;
+    [SerializeField] GameObject burner;
     [SerializeField] float nextSpawnDelay;
     BoxCollider2D bgCollider;
-    float timer;
+    float timerGainer;
+    float timerBurner=5f;
 
     private void Start()
     {
-        timer = nextSpawnDelay;
+        timerGainer = nextSpawnDelay;
         bgCollider = GetComponent<BoxCollider2D>();
 
     }
     private void Update()
     {
-        if (Time.time > timer)
+        if (Time.time > timerGainer)
         {
-            SpawnFood();
-            timer = Time.time + nextSpawnDelay;
+            SpawnFood(Gainer);
+            timerGainer = Time.time + nextSpawnDelay;
+        }
+        if(Time.time>timerBurner)
+        {
+            SpawnFood(burner);
+            timerBurner = Time.time + Random.Range(5, 10);
         }
         
     }
-    public void SpawnFood()
+    public void SpawnFood(GameObject spawnItem)
     {
         float x = Random.Range(bgCollider.bounds.min.x, bgCollider.bounds.max.x);
         float y = Random.Range(bgCollider.bounds.min.y, bgCollider.bounds.max.y);
-        GameObject spawnPos = Instantiate(food);
+        GameObject spawnPos = Instantiate(spawnItem);
         spawnPos.transform.position= new Vector3(Mathf.Round( x),Mathf.Round( y), 0f);
     }
 }
