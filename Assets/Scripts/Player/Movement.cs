@@ -73,21 +73,43 @@ public class Movement : MonoBehaviour
     #endregion
     void GetDirection()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && direction != Vector2.down)
+        if (gameObject.tag == "Player1")
         {
-            direction = Vector2.up;
+            if (Input.GetKeyDown(KeyCode.UpArrow) && direction != Vector2.down)
+            {
+                direction = Vector2.up;
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow) && direction != Vector2.up)
+            {
+                direction = Vector2.down;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) && direction != Vector2.right)
+            {
+                direction = Vector2.left;
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow) && direction != Vector2.left)
+            {
+                direction = Vector2.right;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && direction != Vector2.up)
+        else if(gameObject.tag=="Player2")
         {
-            direction = Vector2.down;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && direction != Vector2.right)
-        {
-            direction = Vector2.left;
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && direction != Vector2.left)
-        {
-            direction = Vector2.right;
+            if (Input.GetKeyDown(KeyCode.W) && direction != Vector2.down)
+            {
+                direction = Vector2.up;
+            }
+            else if (Input.GetKeyDown(KeyCode.S) && direction != Vector2.up)
+            {
+                direction = Vector2.down;
+            }
+            else if (Input.GetKeyDown(KeyCode.A) && direction != Vector2.right)
+            {
+                direction = Vector2.left;
+            }
+            else if (Input.GetKeyDown(KeyCode.D) && direction != Vector2.left)
+            {
+                direction = Vector2.right;
+            }
         }
     }
     void Move()
