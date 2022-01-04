@@ -21,6 +21,8 @@ public class Movement : MonoBehaviour
     [SerializeField] float maxX;
     float wrapTimer = 0f;
 
+    //Power-up
+    bool canDie = true;
     private void Start()
     {
         timeDelay = nextStepDelay;
@@ -47,6 +49,28 @@ public class Movement : MonoBehaviour
         }
         DeathCheck();
     }
+
+    #region Getters
+    public List<Transform> GetSegments()
+    {
+        return segments;
+    }
+    public float GetSpeed()
+    {
+        return nextStepDelay;
+    }
+    public void SetCanDie(bool value)
+    {
+        canDie = value;
+    }
+    #endregion
+    #region Setters
+    public void SetSpeed(float speed)
+    {
+        nextStepDelay = speed;
+    }
+
+    #endregion
     void GetDirection()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && direction != Vector2.down)
@@ -96,6 +120,13 @@ public class Movement : MonoBehaviour
             Destroy(segments[segments.Count - 1].gameObject);
             segments.RemoveAt(segments.Count - 1);
         }
+        else
+        {
+            if (canDie)
+            {
+                KillPlayer();
+            }
+        }
     }
 
     void LevelWrap()
@@ -128,14 +159,17 @@ public class Movement : MonoBehaviour
             Vector3 position = transform.position;
             if (position.x == segments[i].position.x && position.y == segments[i].position.y && position.z == segments[i].position.z)
             {
-                Debug.Log("GameOver");
+                if (canDie)
+                {
+                    KillPlayer();
+                }
             }
         }
     }
-
-    public List<Transform> GetSegments()
+    void KillPlayer()
     {
-        return segments;
+        Debug.Log("Death");
     }
+    
 }
 

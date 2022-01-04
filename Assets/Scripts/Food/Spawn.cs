@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawn : MonoBehaviour
@@ -11,9 +9,18 @@ public class Spawn : MonoBehaviour
     float timerGainer;
     float timerBurner=5f;
 
+
+    //Powerup-Spawn
+    [SerializeField] GameObject[] powerups;
+    [SerializeField] float delayBtwPowerupSpawns;
+    float timerPowerup;
+    int currentPowerup;
+
+
     private void Start()
     {
         timerGainer = nextSpawnDelay;
+        timerPowerup = delayBtwPowerupSpawns;
         bgCollider = GetComponent<BoxCollider2D>();
 
     }
@@ -28,6 +35,14 @@ public class Spawn : MonoBehaviour
         {
             SpawnFood(burner);
             timerBurner = Time.time + Random.Range(5, 10);
+        }
+
+
+        if(timerPowerup<Time.time)
+        {
+            currentPowerup = Random.Range(0, powerups.Length-1);
+            SpawnFood(powerups[currentPowerup]);
+            timerPowerup =Time.time+ delayBtwPowerupSpawns;
         }
         
     }

@@ -7,11 +7,14 @@ TagManager:
   - Obstacle
   - Gainer
   - Burner
+  - Shield
+  - ScoreBoost
+  - Speed
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Powerup
   - Water
   - UI
   - 
