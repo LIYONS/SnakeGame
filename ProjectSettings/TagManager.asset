@@ -3,12 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle
+  - Gainer
+  - Burner
+  - Shield
+  - ScoreBoost
+  - Speed
+  - Player1
+  - Player2
+  - P1_Body
+  - P2_Body
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Powerup
   - Water
   - UI
   - 

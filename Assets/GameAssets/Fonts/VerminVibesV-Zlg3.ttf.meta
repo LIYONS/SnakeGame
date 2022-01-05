@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 12c8fe92e999946418541740a17458e9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Vermin Vibes V
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e1d9f3db98fb7604b8ba5de5a3ac520b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
