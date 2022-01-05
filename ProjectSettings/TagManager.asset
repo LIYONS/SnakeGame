@@ -12,6 +12,8 @@ TagManager:
   - Speed
   - Player1
   - Player2
+  - P1_Body
+  - P2_Body
   layers:
   - Default
   - TransparentFX

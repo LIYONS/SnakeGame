@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Vector2 direction;
+    [SerializeField] GameOver gameOver;
     [SerializeField] float nextStepDelay;
     [SerializeField] GameObject body;
     [SerializeField] float initialSegments;
@@ -15,14 +16,13 @@ public class Movement : MonoBehaviour
 
 
     //Level-wrap
-    [SerializeField] float minY;
     [SerializeField] float maxY;
-    [SerializeField] float minx;
     [SerializeField] float maxX;
     float wrapTimer = 0f;
 
     //Power-up
     bool canDie = true;
+
     private void Start()
     {
         timeDelay = nextStepDelay;
@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
     {
         Move();
         currentPos = transform.position;
-        if((currentPos.x < minx || currentPos.x > maxX || currentPos.y < minY || currentPos.y > maxY) && wrapTimer<Time.time)
+        if((currentPos.x < 0 || currentPos.x > maxX || currentPos.y < 0 || currentPos.y > maxY) && wrapTimer<Time.time)
         {
             LevelWrap();
             wrapTimer = Time.time + .5f;
@@ -146,7 +146,7 @@ public class Movement : MonoBehaviour
         {
             if (canDie)
             {
-                KillPlayer();
+                gameOver.Kill();
             }
         }
     }
@@ -154,21 +154,21 @@ public class Movement : MonoBehaviour
     void LevelWrap()
     {
         Vector3 pos = transform.position;
-        if (pos.x <= minx)
+        if (pos.x <=0)
         {
             pos.x = maxX;
         }
         else if (pos.x >= maxX)
         {
-            pos.x = minx;
+            pos.x = 0;
         }
-        else if (pos.y <= minY)
+        else if (pos.y <= 0)
         {
             pos.y = maxY;
         }
         else if (pos.y >= maxY)
         {
-            pos.y = minY;
+            pos.y = 0;
         }
 
         transform.position = pos;
@@ -183,15 +183,21 @@ public class Movement : MonoBehaviour
             {
                 if (canDie)
                 {
-                    KillPlayer();
+                    gameOver.Kill();
                 }
             }
         }
     }
-    void KillPlayer()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Death");
+        if(collision.gameObject.tag=="P2_Body" && this.gameObject.tag=="Player1")
+        {
+            gameOver.Kill();
+        }
+        else if (collision.gameObject.tag == "P1_Body" && this.gameObject.tag == "Player2")
+        {
+            gameOver.Kill();
+        }
     }
-    
 }
 

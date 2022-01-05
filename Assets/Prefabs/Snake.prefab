@@ -16,9 +16,10 @@ GameObject:
   - component: {fileID: 4574563872984870832}
   - component: {fileID: 4574563872984870835}
   - component: {fileID: 3551673948829583920}
+  - component: {fileID: 4457342835108073694}
   m_Layer: 0
   m_Name: Snake
-  m_TagString: Player
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: -2413806693520163455, guid: 806e4a610eaf2594ab1f37d0f92ddce8, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,13 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf49f8444bc040247bb01ffa04b37572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: {fileID: 0}
   nextStepDelay: 0.2
-  body: {fileID: 8148220698193149996, guid: 3fda199c78ef0234582114dc74771d47, type: 3}
+  body: {fileID: 8148220698193149996, guid: 02ecff16708d2c241ad81ffc16bb0c29, type: 3}
   initialSegments: 3
-  minY: -9.5
-  maxY: 9.5
-  minx: -12
-  maxX: 12
+  maxY: 30
+  maxX: 30
 --- !u!114 &4574563872984870832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,3 +195,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerupTime: 4
+  powerupText: {fileID: 0}
+--- !u!114 &4457342835108073694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574563872984870858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c8d02d41c1fac4a9aed68ac18d5ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 0}
+  scoreForGainer: 10

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 11b86d9e309c7b84c867a34ee3777c94
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - PacFont
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 36c2fe0da3d73c548bde47c0df5f5ba7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
